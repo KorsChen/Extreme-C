@@ -58,8 +58,8 @@ int not_friendly_sum(int* matrix, int rows, int columns) {
 int main(int argc, char** argv) {
 
   if (argc < 4) {
-    printf("Usage: %s [print|friendly-sum|not-friendly-sum] ");
-    printf("[number-of-rows] [number-of-columns]\n", argv[0]);
+    printf("Usage: %s [print|friendly-sum|not-friendly-sum] ", argv[0]);
+    printf("[number-of-rows] [number-of-columns]\n");
     exit(1);
   }
   char* operation = argv[1];
