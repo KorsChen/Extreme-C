@@ -4,6 +4,10 @@
 #include <stdio.h>  // For printf function
 #include <stdlib.h> // For C library's heap memory functions
 
+#if defined(__APPLE__) && defined(__MACH__)
+    #include <unistd.h>
+#endif
+
 void print_mem_maps() {
 #ifdef __linux__
   FILE* fd = fopen("/proc/self/maps", "r");
@@ -17,6 +21,11 @@ void print_mem_maps() {
     printf("> %s", line);
   }
   fclose(fd);
+#elif defined(__APPLE__) && defined(__MACH__)
+   char command[256];
+   pid_t pid = getpid();
+   sprintf(command, "vmmap %d", pid); 
+   system(command); 
 #endif
 }
 
